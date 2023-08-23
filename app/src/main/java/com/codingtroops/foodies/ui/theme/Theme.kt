@@ -14,10 +14,10 @@ private val DarkColorPalette = darkColors(
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200,
-    background = Grey200
+    primary = PrimaryBg,
+    primaryVariant = PrimaryBg,
+    secondary = BalckBg,
+    background = BalckBg
 
     /* Other default colors to override
 background = Color.White,
@@ -31,7 +31,7 @@ onSurface = Color.Black,
 
 @Composable
 fun ComposeSampleTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean =false,
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {

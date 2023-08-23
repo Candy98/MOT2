@@ -8,3 +8,6 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 val Grey200 = Color(0xFFF8F8F8)
 val Black200 = Color(0xFF121212)
+
+val BalckBg = Color(0xFF0D0D0D)
+val PrimaryBg = Color(0xFFE96A2E)
