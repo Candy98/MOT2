@@ -22,6 +22,7 @@ import com.codingtroops.foodies.ui.feature.auth.ChooseScreen
 import com.codingtroops.foodies.ui.feature.auth.LoginScreen
 import com.codingtroops.foodies.ui.feature.auth.RegistrationScreen
 import com.codingtroops.foodies.ui.feature.auth.SplashScreen
+import com.codingtroops.foodies.ui.feature.home.HomeScreen
 import com.codingtroops.foodies.ui.theme.ComposeSampleTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -70,6 +71,9 @@ private fun FoodApp() {
         composable(route = NavigationKeys.Route.VEH_DETAILS_SCREEN) {
             AddVehicleDetailsScreenDestination(navController)
         }
+        composable(route = NavigationKeys.Route.HOME_SCREEN) {
+            HomeScreenDestination(navController)
+        }
     }
 
 
@@ -89,6 +93,12 @@ private fun FoodCategoriesDestination(navController: NavHostController) {
 @Composable
 private fun LoginDestination(navController: NavHostController) {
     ChooseScreen(
+        navController
+    )
+}
+@Composable
+private fun HomeScreenDestination(navController: NavHostController) {
+    HomeScreen(
         navController
     )
 }
@@ -138,6 +148,7 @@ object NavigationKeys {
         const val LOGIN2 = "login2"
         const val Reg = "registration"
         const val VEH_DETAILS_SCREEN = "veh_details_screen"
+        const val HOME_SCREEN = "home_screen"
         const val FOOD_CATEGORY_DETAILS = "$FOOD_CATEGORIES_LIST/{$FOOD_CATEGORY_ID}"
     }
 

@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.codingtroops.foodies.R
+import com.codingtroops.foodies.ui.NavigationKeys
 import com.codingtroops.foodies.ui.components.CustomButton
 import com.codingtroops.foodies.utils.Fonts
 
@@ -72,22 +73,18 @@ fun ChooseScreen(navController: NavController) {
                 fontSize = 12.sp,
                 modifier = Modifier
                     .wrapContentHeight()
-                    .width(250.dp)
-
-                ,
+                    .width(250.dp),
                 color = Color.White,
                 textAlign = TextAlign.Center
 
             )
 
 
-                Box(modifier = Modifier.height(10.dp))
-                CustomButton(text = "Sign Up", onClick = { println("ButtonClicked!!") })
-                Box(modifier = Modifier.height(5.dp))
-                CustomButton(text = "Login", onClick = { navController.navigate("login2") })
+            Box(modifier = Modifier.height(10.dp))
+            CustomButton(text = "Sign Up", onClick = { navController.navigate(NavigationKeys.Route.Reg) })
+            Box(modifier = Modifier.height(5.dp))
+            CustomButton(text = "Login", onClick = { navController.navigate("login2") })
             Box(modifier = Modifier.height(60.dp))
-
-
 
 
         }

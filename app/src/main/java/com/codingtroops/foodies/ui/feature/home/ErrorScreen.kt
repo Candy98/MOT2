@@ -1,14 +1,11 @@
 package com.codingtroops.foodies.ui.feature.home
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,12 +18,12 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Bottom
+import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -38,11 +35,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.codingtroops.foodies.R
 import com.codingtroops.foodies.ui.NavigationKeys
+import com.codingtroops.foodies.ui.components.CustomButton2
+import com.codingtroops.foodies.ui.components.RowError
 import com.codingtroops.foodies.ui.theme.ComposeSampleTheme
 import com.codingtroops.foodies.utils.Fonts
 
 @Composable
-fun DashboardScreen(navController: NavController? = null) {
+fun ErrorScreen(navController: NavController? = null) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -99,42 +98,29 @@ fun DashboardScreen(navController: NavController? = null) {
 
 
             }
-        }
 
+        }
         Box(
             modifier = Modifier
+                .wrapContentWidth()
                 .fillMaxHeight()
-                .fillMaxWidth()
-                .clickable {
-                navController?.navigate(NavigationKeys.Route.HOME_SCREEN)
-                }
-            ,
-            Center,
-
-
+           , contentAlignment = BottomCenter
         ) {
-
-
-            val visible by remember { mutableStateOf(true) }
-            this@Column.AnimatedVisibility(
-                visible = visible,
-                enter = fadeIn(
-                    // Overwrites the initial value of alpha to 0.4f for fade in, 0 by default
-                    initialAlpha = 0.4f
-                ),
-                exit = fadeOut(
-                    // Overwrites the default animation with tween
-                    animationSpec = tween(durationMillis = 250)
-                )
+            Column(
+                modifier = Modifier
+                    .wrapContentWidth()
+                    .wrapContentHeight()
             ) {
-                // Content that needs to appear/disappear goes here:
-                Column {
+                Column(modifier = Modifier
+                    .wrapContentWidth()
+                    .wrapContentHeight()
+                ) {
                     Image(
                         painterResource(id = R.drawable.error1),
                         contentDescription = "Logo",
                         modifier = Modifier
-                            .height(60.dp)
-                            .width(60.dp)
+                            .height(80.dp)
+                            .width(80.dp)
                             .align(CenterHorizontally)
 
 
@@ -145,21 +131,37 @@ fun DashboardScreen(navController: NavController? = null) {
                         text = "Under Verification",
                         fontFamily = Fonts.PoppinsBold,
                         fontSize = 16.sp,
-                        color = Color(0xff000000),
+                        color = Color(0xffC53F3F),
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center
                     )
-                    Text(
-                        text = "You can get access once your\ndocuments have been verified.",
-                        fontFamily = Fonts.Poppins,
-                        fontSize = 12.sp,
-                        color = Color(0xff404444),
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center
+                    Spacer(modifier = Modifier.height(40.dp))
 
-                    )
+                    Box(modifier = Modifier.fillMaxWidth().height(1.dp)
+                        .padding(start = 20.dp, end = 20.dp
+                        )
+                        .background(color = Color(0xffF0F0F0))) {
+
+                    }
+                    Spacer(modifier = Modifier.height(40.dp))
+
+                    RowError(number = 1, contentText = "Please upload proper scan copy of license.")
+                    Spacer(modifier = Modifier.height(20.dp))
+                    RowError(number = 2, contentText = "Please upload proper scan copy of license.")
+                    Spacer(modifier = Modifier.height(20.dp))
+                    RowError(number = 3, contentText = "Please upload proper scan copy of license.")
 
                 }
+                Spacer(modifier = Modifier.height(100.dp))
+
+                Row(modifier = Modifier.fillMaxWidth() ,horizontalArrangement = Arrangement.Center) {
+                    CustomButton2(text = "Update", onClick = {
+                        navController?.navigate(NavigationKeys.Route.VEH_DETAILS_SCREEN)
+                    })
+
+                }
+                Spacer(modifier = Modifier.height(150.dp))
+
             }
 
 
@@ -169,8 +171,8 @@ fun DashboardScreen(navController: NavController? = null) {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview8() {
+fun DefaultPreview9() {
     ComposeSampleTheme {
-        DashboardScreen()
+        ErrorScreen()
     }
 }

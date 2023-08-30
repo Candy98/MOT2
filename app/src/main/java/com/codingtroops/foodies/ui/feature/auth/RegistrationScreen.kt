@@ -78,7 +78,7 @@ fun RegistrationScreen(navController: NavController? = null) {
                     .clip(shape = RoundedCornerShape(10.dp))
 
 
-                )
+            )
             Column(modifier = Modifier.padding(start = 20.dp)) {
                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -132,7 +132,7 @@ fun RegistrationScreen(navController: NavController? = null) {
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+        ) {
             Spacer(modifier = Modifier.height(20.dp))
             CustomEditText(text = "First Name", type = KeyboardType.Email)
             Spacer(modifier = Modifier.height(8.dp))
@@ -147,10 +147,11 @@ fun RegistrationScreen(navController: NavController? = null) {
                     fontSize = 14.sp,
                     color = Color(0xff404444),
                 )
-                Box(modifier = Modifier
-                    .border(1.dp, Color(0xffC1C1C1), shape = RoundedCornerShape(6.dp))
-                    .height(130.dp)
-                    .fillMaxWidth(),
+                Box(
+                    modifier = Modifier
+                        .border(1.dp, Color(0xffC1C1C1), shape = RoundedCornerShape(6.dp))
+                        .height(130.dp)
+                        .fillMaxWidth(),
 
                     ) {
                     Image(

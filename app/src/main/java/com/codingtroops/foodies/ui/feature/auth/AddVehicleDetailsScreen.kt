@@ -48,6 +48,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.codingtroops.foodies.R
+import com.codingtroops.foodies.ui.NavigationKeys
 import com.codingtroops.foodies.ui.components.CustomButton2
 import com.codingtroops.foodies.ui.components.CustomEditText
 import com.codingtroops.foodies.ui.components.DropDownMenu
@@ -239,7 +240,7 @@ fun AddVehicleDetailsScreen(navController: NavController? = null) {
             Spacer(modifier = Modifier.height(30.dp))
 
             CustomButton2(text = "Sign Up", onClick = {
-
+            navController?.navigate(NavigationKeys.Route.HOME_SCREEN)
             }
 
             )
